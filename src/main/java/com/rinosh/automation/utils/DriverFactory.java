@@ -26,6 +26,8 @@ public class DriverFactory {
             String headlessFlag = ConfigReader.get("headless");
             if ("true".equalsIgnoreCase(headlessFlag)) {
                 options.addArguments("--headless=new");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
                 options.addArguments("--window-size=1920,1080");
                 log.info("Running Chrome in headless mode");
             }

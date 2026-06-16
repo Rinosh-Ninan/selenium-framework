@@ -31,6 +31,9 @@ jobs:
         run: |
           mvn clean compile
 
+      - name: Run Tests
+        run: mvn clean test -Dheadless=true
+
       - name: List project files
         run: |
           ls -la
