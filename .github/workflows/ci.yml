@@ -48,8 +48,8 @@ jobs:
         run: |
           mvn clean test \
           -Dheadless=true \
-          -Dgroups="${{ github.event.inputs.groups }}" \
-          -Denv="${{ github.event.inputs.env }}"
+          -Dgroups="${{ github.event.inputs.groups || 'smoke' }}" \
+          -Denv="${{ github.event.inputs.env || 'qa' }}"
 
       - name: Upload Extent Report
         if: always()
