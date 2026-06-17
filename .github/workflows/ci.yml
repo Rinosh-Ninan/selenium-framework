@@ -34,6 +34,13 @@ jobs:
       - name: Run Tests
         run: mvn clean test -Dheadless=true
 
+      - name: Upload Extent Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extent-report
+          path: target/extent-report.html
+
       - name: List project files
         run: |
           ls -la
