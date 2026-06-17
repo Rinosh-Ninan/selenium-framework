@@ -4,6 +4,19 @@ on:
   push:
     branches: [ main ]
 
+  workflow_dispatch:
+    inputs:
+
+      groups:
+        description: 'Test Groups'
+        required: true
+        default: 'smoke'
+
+      env:
+        description: 'Environment'
+        required: true
+        default: 'qa'
+
 jobs:
   build-and-test:
 
@@ -32,7 +45,11 @@ jobs:
           mvn clean compile
 
       - name: Run Tests
-        run: mvn clean test -Dheadless=true
+        run: |
+          mvn clean test \
+          -Dheadless=true \
+          -Dgroups="${{ github.event.inputs.groups }}" \
+          -Denv="${{ github.event.inputs.env }}"
 
       - name: Upload Extent Report
         if: always()

@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest{
     @Test(
-            groups = {"smoke", "regression"},
+            groups = {"smoke"},
             retryAnalyzer = RetryAnalyzer.class
     )
     public void loginTest() {
@@ -21,7 +21,7 @@ public class LoginTest extends BaseTest{
     }
 
     @Test(
-            groups = {"smoke", "regression"},
+            groups = {"regression"},
             retryAnalyzer = RetryAnalyzer.class
     )
     public void logoutTest() {
